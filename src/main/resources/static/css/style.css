@@ -1,0 +1,156 @@
+/* Global Motion & Curves */
+:root {
+    --primary-color: #005da0;
+    /* Healthcare Blue */
+    --primary-dark: #004a80;
+    --primary-light: #e6f0f7;
+    --text-color: #333;
+    --white: #ffffff;
+    --border-color: #b0c4de;
+    --radius: 12px;
+    /* Curve constant */
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-light);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: var(--white);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 93, 160, 0.15);
+    /* Soft shadow */
+    border-radius: var(--radius);
+    /* Curve */
+    animation: fadeIn 0.6s ease-out;
+    /* Motion */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1,
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    /* Required for border-radius on rows/cells to work nicely if needed, but here mostly for spacing */
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 15px;
+    /* More breathing room */
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: var(--primary-light);
+}
+
+tr {
+    transition: background-color var(--transition-speed);
+}
+
+tr:hover {
+    background-color: #d1e3f2;
+    /* Hover effect */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 25px;
+    /* Pill shape curve */
+    transition: all var(--transition-speed) ease;
+    /* Motion */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: var(--radius);
+    /* Curve */
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+    /* Motion */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 93, 160, 0.2);
+    /* Glow effect */
+}

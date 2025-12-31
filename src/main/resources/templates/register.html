@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Register Patient</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Register New Patient</h1>
+
+        <form action="#" th:action="@{/register}" th:object="${patient}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" th:field="*{age}" required min="0" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="condition">Medical Condition</label>
+                <input type="text" id="condition" th:field="*{condition}" required>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+            <a href="/" class="btn"
+                style="background-color: #fff; color: var(--primary-color); border: 1px solid var(--primary-color); margin-left: 10px;">Cancel</a>
+        </form>
+    </div>
+</body>
+
+</html>

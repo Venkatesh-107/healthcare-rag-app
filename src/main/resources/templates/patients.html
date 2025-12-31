@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Healthcare Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Patient Dashboard</h1>
+        <p>Current registered patients in the system.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.id}">1</td>
+                    <td th:text="${patient.name}">John Doe</td>
+                    <td th:text="${patient.age}">30</td>
+                    <td th:text="${patient.condition}">Flu</td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(patients)}">
+                    <td colspan="4" style="text-align:center;">No patients registered.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/register" class="btn">Register New Patient</a>
+        <a href="/" class="btn"
+            style="background-color: #fff; color: var(--primary-color); border: 1px solid var(--border-color); margin-left: 10px;">Back
+            to Home</a>
+    </div>
+</body>
+
+</html>

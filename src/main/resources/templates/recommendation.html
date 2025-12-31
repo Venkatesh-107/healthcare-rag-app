@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Diagnosis Recommendation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Diagnosis Recommendation</h1>
+        <p>Enter patient symptoms to get a preliminary diagnosis.</p>
+
+        <form action="#" th:action="@{/recommendation}" method="post">
+            <div class="form-group">
+                <label for="symptoms">Symptoms (e.g., headache, fever, cough)</label>
+                <input type="text" id="symptoms" name="symptoms" required placeholder="Describe symptoms..."
+                    th:value="${symptoms}">
+            </div>
+
+            <button type="submit" class="btn">Get Recommendation</button>
+            <a href="/" class="btn"
+                style="background-color: #fff; color: var(--primary-color); border: 1px solid var(--primary-color); margin-left: 10px;">Back
+                to Home</a>
+        </form>
+
+        <div th:if="${diagnosis}"
+            style="margin-top: 30px; padding: 20px; background-color: #e6f0f7; border-radius: var(--radius); border-left: 5px solid var(--primary-color); animation: fadeIn 0.5s ease-out;">
+            <h2 style="border-bottom: none; margin-top: 0;">Recommendation Result</h2>
+            <p style="font-size: 18px; color: var(--primary-dark); font-weight: 500;" th:text="${diagnosis}"></p>
+        </div>
+    </div>
+</body>
+
+</html>

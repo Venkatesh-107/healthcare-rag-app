@@ -1,0 +1,13 @@
+Policy: General Checkup
+Frequency: Once every year.
+Details: Includes blood pressure, BMI, and visual metrics.
+
+Policy: Vaccination
+Flu Shot: Available seasonally.
+Covid-19: Available upon request.
+
+Procedure: Emergency Admission
+Steps: 
+1. Triage at front desk.
+2. Initial vitals check.
+3. Assignment to doctor.
