@@ -41,14 +41,24 @@ public class RagService {
 
     // Ingests a Spring Resource (e.g. from file upload or classpath)
     public void ingest(Resource resource) throws IOException {
+        // Create temp file
+        java.nio.file.Path tempFile = java.nio.file.Files.createTempFile("rag_ingest_", ".txt");
+        // Copy content from resource stream to temp file
+        try (java.io.InputStream inputStream = resource.getInputStream()) {
+            java.nio.file.Files.copy(inputStream, tempFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+        }
+
         Document document = dev.langchain4j.data.document.loader.FileSystemDocumentLoader
-                .loadDocument(resource.getFile().toPath(), new TextDocumentParser());
+                .loadDocument(tempFile, new TextDocumentParser());
         var ingestor = dev.langchain4j.store.embedding.EmbeddingStoreIngestor.builder()
                 .documentSplitter(DocumentSplitters.recursive(300, 0))
                 .embeddingModel(embeddingModel)
                 .embeddingStore(embeddingStore)
                 .build();
         ingestor.ingest(document);
+
+        // Clean up
+        java.nio.file.Files.deleteIfExists(tempFile);
     }
 
     public String chat(String queryText) {
